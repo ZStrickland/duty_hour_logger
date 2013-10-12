@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 describe User do
-  
+
   before do
-  	@user = User.new(name: "Example User", email: "user@example.com", password: "foobar", password_confirmation: "foobar")
+  	@user = User.new(name: "Example User", email: "user@example.com", password: "foobar", password_confirmation: "foobar", year: "1")
   end
 
   subject {@user}
@@ -13,6 +13,8 @@ describe User do
   it {should respond_to(:password_digest)}
   it {should respond_to(:password)}
   it {should respond_to(:password_confirmation)}
+  it {should respond_to(:year)}
+  it {should respond_to(:remember_token)}
   it {should respond_to(:authenticate)}
 
   it {should be_valid}
@@ -74,7 +76,7 @@ describe User do
 
   describe "when password is not present" do
   	before do
-  		@user = User.new(name: "Example User", email: "user@example.com", password: " ", password_confirmation: " ")
+  		@user = User.new(name: "Example User", email: "user@example.com", password: " ", password_confirmation: " ", year: "1")
   	end
   	it {should_not be_valid}
   end
@@ -103,5 +105,17 @@ describe User do
   		it {should_not eq user_for_invalid_password}
   		specify {expect(user_for_invalid_password).to be_false}
   	end
+  end
+
+  describe "when no year is selected" do
+      before do
+        @user = User.new(name: "Example User", email: "user@example.com", password: "password", password_confirmation: "password", year: "")
+      end
+        it {should_not be_valid}
+  end
+
+  describe "remember token" do
+    before {@user.save}
+    its(:remember_token) {should_not be_blank}
   end
 end

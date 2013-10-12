@@ -18,6 +18,9 @@
 		<%= f.label :password_confirmation, "Confirmation" %>
 		<%= f.password_field :password_confirmation %>
 
+		<%= f.label :year, "What year are you?" %>
+		<%= f.select :year, [['Please select a year', nil], ['First Year', 1], ['Second Year', 2]] %>
+
 		<%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
 		<% end %>
 	</div>
