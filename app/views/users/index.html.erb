@@ -1,0 +1,17 @@
+<% provide(:title, 'All users') %>
+<h1>All users</h1>
+
+<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered table-hover" id="usertable">
+<tr>
+<th><%= sortable "name" %></th>
+<th><%= sortable "email" %></th>
+<th><%= sortable "year" %></th>
+</tr>
+<% for user in @users %>
+<tr>
+<td><%= user.name %></td>
+<td><%= user.email %></td>
+<td><%= user.year == 1 ? "First Year" : "Second Year" %></td>
+</tr>
+<% end %>
+</table>
