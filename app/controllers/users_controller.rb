@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
-	before_action :signed_in_user, 	only: [:index, :show, :edit, :update]
+	before_action :signed_in_user, 	only: [:index, :show, :edit, :update, :destroy]
 	before_action :correct_user, 		only: [:show, :edit, :update]
-	helper_method :sort_column, :sort_direction
+	before_action :admin_user, 		only: [:index, :destroy]
 
 	def index
-		@users = User.order(sort_column + ' ' + sort_direction)
+		@users = User.all
 	end
 
 	def show
@@ -37,6 +37,12 @@ class UsersController < ApplicationController
 		end
 	end
 
+	def destroy
+		User.find(params[:id]).destroy
+		flash[:success] = "User destroyed."
+		redirect_to users_url
+	end
+
 	private
 
 		def user_params
@@ -54,14 +60,10 @@ class UsersController < ApplicationController
 
 		def correct_user
 			@user = User.find(params[:id])
-			redirect_to(root_url) unless current_user?(@user)
+			redirect_to(root_url) unless current_user?(@user) or current_user.admin?
 		end
 
-		def sort_column
-			User.column_names.include?(params[:sort]) ? params[:sort] : "name"
-		end
-
-		def sort_direction
-			%w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+		def admin_user
+			redirect_to(root_url) unless current_user.admin?
 		end
 end
