@@ -8,4 +8,12 @@
 			</h1>
 		</section>
 	</aside>
+	<div class="span8">
+		<% if @user.hourlogs.any? %>
+		<h3>Logs completed (<%= current_user.hourlogs.count %>)</h3>
+		<ol class="hourlogs">
+			<%= render @hourlogs %>
+		</ol>
+		<% end %>
+	</div>
 </div>

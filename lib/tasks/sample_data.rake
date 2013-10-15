@@ -1,13 +1,36 @@
 namespace :db do
 	desc "Fill database with sample data"
 	task populate: :environment do
-		User.create!(name: "Example User", email: "example@example.com", password: "password", password_confirmation: "password", year: "1", admin: true)
+		User.create!(name: "Example User", email: "example@louisville.edu", password: "password", password_confirmation: "password", year: "1", admin: true)
 		99.times do |n|
 			name = Faker::Name.name
-			email = "example-#{n+1}@example.com"
+			email = "example-#{n+1}@louisville.edu"
 			password = "password"
 			year = "#{rand(1..2)}"
 			User.create!(name: name, email: email, password: password, password_confirmation: password, year: year)
+		end
+
+		users = User.all(limit: 20)
+		5.times do
+			logdate = "10/#{rand(14..18)}/2013"
+			h_study = "#{rand(1..12)}"
+			h_sleep = "#{rand(3..10)}"
+			h_lecture = "#{rand(0..4)}"
+			h_mandatory = "#{rand(0..4)}"
+			h_extracurriculars = "#{rand(0..2)}"
+			meal = "#{rand(1..3)}"
+			anxious = "#{rand(0..1)}"
+			sad = "#{rand(0..1)}"
+			depressed = "#{rand(0..1)}"
+			energy = "#{rand(0..1)}"
+			hopeless = "#{rand(0..1)}"
+			sleep_trouble = "#{rand(0..1)}"
+			awake_trouble = "#{rand(0..1)}"
+			focus = "#{rand(0..1)}"
+			no_school = "#{rand(0..1)}"
+			exercise = "#{rand(0..1)}"
+			primary_class = "Gross Anatomy"
+			users.each { |user| user.hourlogs.create!(h_study: h_study, h_sleep: h_sleep, h_lecture: h_lecture, h_mandatory: h_mandatory, h_extracurriculars: h_extracurriculars, meal: meal, anxious: anxious, sad: sad, depressed: depressed, energy: energy, hopeless: hopeless, sleep_trouble: sleep_trouble, awake_trouble: awake_trouble, focus: focus, no_school: no_school, logdate: logdate)}
 		end
 	end
 end

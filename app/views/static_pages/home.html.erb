@@ -1,9 +1,21 @@
-<div class="center hero-unit">
-  <h1>MS1 MS2 Duty Hour Logger</h1>
+<% if signed_in? %>
+	<div class="row">
+		<aside class="span12">
+			<section>
+				<%= render 'shared/user_info' %>
+			</section>
+			<section>
+				<%= render 'shared/hourlog_form' %>
+			</section>
+	</div>
+<% else %>
+	<div class="center hero-unit">
+	  <h1>MS1 MS2 Duty Hour Logger</h1>
 
-  <h2>
-    This is the home page.
-  </h2>
+	  <h2>
+	    This is the home page.
+	  </h2>
 
-  <%= link_to "Sign up now", signup_path, class: "btn btn-large btn-primary" %>
-</div>
+	  <%= link_to "Sign up now", signup_path, class: "btn btn-large btn-primary" %>
+	</div>
+<% end %>

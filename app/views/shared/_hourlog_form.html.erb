@@ -1,0 +1,38 @@
+<%= simple_form_for @hourlog, html: {class: 'form-inline'} do |f| %>
+<%= f.error_notification %>
+<div class="row-fluid">
+	<div class="span12">
+		<div class="row-fluid">
+			<div class="span4">
+			<%= f.input :logdate, wrapper: :prepend, label: "Date:", :as => "string", :input_html => {:class => 'datepicker'} %>
+			<%= f.input :h_study, label: 'How many hours did you sleep?' %>
+			<%= f.input :h_sleep, label: 'How many hours did you study?' %>
+			<%= f.input :h_lecture, label: 'How many hours did you spend in lecture?' %>
+			<%= f.input :h_mandatory, label: 'How many hours did you spend in mandatory course activities outside of lecture (Sims, TBLs, PBLS, etc.)?' %>
+			<% if current_user.year == 1 %>
+				<%= f.input :primary_class, collection: ["Gross Anatomy", "Embryology", "Neuroscience", "ICM 1"], label: 'Which course did you spend the most time on today?' %>
+			<% end %>
+          		<% if current_user.year == 2 %>
+          			<%= f.input :primary_class, collection: ["Pathology", "Pharmacology", "Microbiology", "ICM 2"] %>
+          		<% end %>
+			<%= f.input :h_extracurriculars, label: 'How many hours did you spend participating in extracurriculars?' %>
+			<%= f.input :meal, label: 'How many full meals did you eat?' %>
+			</div>
+			<div class="span4 offset2">
+			In this period have you...
+			<%= f.input :anxious, as: :boolean, inline_label: 'felt anxious?', label: false   %>
+			<%= f.input :sad, as: :boolean, inline_label: 'felt sad?', label: false   %>
+			<%= f.input :depressed, as: :boolean, inline_label: 'felt depressed?', label: false   %>
+			<%= f.input :energy, as: :boolean, inline_label: 'felt like you have no energy?', label: false   %>
+			<%= f.input :hopeless, as: :boolean, inline_label: 'felt hopeless or helpless?', label: false   %>
+			<%= f.input :sleep_trouble, as: :boolean, inline_label: 'had trouble going to sleep?', label: false   %>
+			<%= f.input :awake_trouble, as: :boolean, inline_label: 'had trouble staying awake?', label: false   %>
+			<%= f.input :focus, as: :boolean, inline_label: 'had trouble focusing?', label: false   %>
+			<%= f.input :no_school, as: :boolean, inline_label: 'spent at least 30 minutes on an activity unrelated to school (tv, movie, hobby, etc.)?', label: false   %>
+			<%= f.input :exercise, as: :boolean, inline_label: 'spent at least 30 minutes exercising?', label: false   %>
+			</div>
+		</div>
+	<%= f.submit 'Create log', class: 'btn btn-large btn-primary' %>
+	</div>
+</div>
+<% end %>

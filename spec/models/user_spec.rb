@@ -17,6 +17,7 @@ describe User do
   it {should respond_to(:remember_token)}
   it {should respond_to(:authenticate)}
   it {should respond_to(:admin)}
+  it {should respond_to(:hourlogs)}
 
   it {should be_valid}
   it {should_not be_admin}
@@ -129,4 +130,26 @@ describe User do
     before {@user.save}
     its(:remember_token) {should_not be_blank}
   end
+
+  describe "hourlog associations" do
+
+  	before {@user.save}
+  	let!(:older_hourlog) do
+  		FactoryGirl.create(:hourlog, user_id: @user.id, created_at: 1.day.ago)
+  	end
+  	let!(:newer_hourlog) do
+  		FactoryGirl.create(:hourlog, user_id: @user.id, created_at: 1.hour.ago)
+  	end
+
+  	it "should destroy associated hourlogs" do
+  		hourlogs = @user.hourlogs.to_a
+  		@user.destroy
+  		expect(hourlogs).not_to be_empty
+  		hourlogs.each do |hourlog|
+  			expect(Hourlog.where(id: hourlog.id)).to be_empty
+  		end
+  	end
+  end
+
+
 end

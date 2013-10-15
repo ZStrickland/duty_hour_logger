@@ -156,4 +156,11 @@ $(document).ready(function() {
 			"sLengthMenu": "_MENU_ Records per page"
 		}
 	} );
+	$('input.datepicker').datepicker({
+		//format: 'mm/dd/yyyy',
+		todayBtn: "linked",
+		autoclose: true,
+		todayHighlight: true
+	} );
+	$('input.datepicker').datepicker('setDate', new Date());
 } );

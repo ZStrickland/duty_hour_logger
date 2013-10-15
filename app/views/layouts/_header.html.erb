@@ -6,7 +6,11 @@
         <ul class="nav pull-right">
           <li><%= link_to "Home",    root_path %></li>
           <% if signed_in? %>
-          	<li><%= link_to"Enter Data", '#' %>
+          	<li>
+          		<% if current_user.admin?  %>
+          		<%= link_to "Data", hourlogs_path %>
+          		<% end %>
+          	</li>
           	<li>
           		<% if current_user.admin?  %>
           		<%= link_to "Users", users_path %>

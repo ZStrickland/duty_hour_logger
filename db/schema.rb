@@ -11,7 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131013045351) do
+ActiveRecord::Schema.define(version: 20131015225640) do
+
+  create_table "hourlogs", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "h_study"
+    t.integer  "h_sleep"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "meal"
+    t.integer  "h_lecture"
+    t.integer  "h_mandatory"
+    t.integer  "h_extracurriculars"
+    t.integer  "anxious"
+    t.integer  "sad"
+    t.integer  "depressed"
+    t.integer  "energy"
+    t.integer  "hopeless"
+    t.integer  "sleep_trouble"
+    t.integer  "awake_trouble"
+    t.integer  "focus"
+    t.integer  "no_school"
+    t.string   "logdate"
+    t.string   "primary_class"
+    t.integer  "exercise"
+  end
 
   create_table "users", force: true do |t|
     t.string   "name"

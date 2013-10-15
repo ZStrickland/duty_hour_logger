@@ -20,3 +20,11 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  activerecord:
+    attributes:
+      hourlog:
+        h_study: "Hours studied"
+        h_sleep: "Hours slept"
+  date:
+    formats:
+      default: "%m/%d/%Y"
