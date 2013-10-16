@@ -13,7 +13,7 @@
 				<%= f.input :primary_class, collection: ["Gross Anatomy", "Embryology", "Neuroscience", "ICM 1"], label: 'Which course did you spend the most time on today?' %>
 			<% end %>
           		<% if current_user.year == 2 %>
-          			<%= f.input :primary_class, collection: ["Pathology", "Pharmacology", "Microbiology", "ICM 2"] %>
+          			<%= f.input :primary_class, collection: ["Pathology", "Pharmacology", "Microbiology", "iTBL", "ICM 2"], label: 'Which course did you spend the most time on today?' %>
           		<% end %>
 			<%= f.input :h_extracurriculars, label: 'How many hours did you spend participating in extracurriculars?' %>
 			<%= f.input :meal, label: 'How many full meals did you eat?' %>
