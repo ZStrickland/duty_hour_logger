@@ -9,6 +9,7 @@ gem 'faker', '1.1.2'
 gem 'simple_form'
 gem 'bootstrap-datepicker-rails'
 gem 'jquery-turbolinks'
+gem 'sqlite3', '1.3.8'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'
