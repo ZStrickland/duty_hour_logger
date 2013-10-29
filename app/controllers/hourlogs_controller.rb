@@ -20,7 +20,7 @@ class HourlogsController < ApplicationController
 	private
 
 		def hourlog_params
-			params.require(:hourlog).permit(:logdate, :h_study, :h_sleep, :h_lecture, :h_mandatory, :h_extracurriculars, :meal, :anxious, :sad, :depressed, :energy, :hopeless, :trouble_sleep, :trouble_awake, :focus, :no_school, :primary_class, :exercise)
+			params.require(:hourlog).permit(:logdate, :h_study, :h_sleep, :h_lecture, :h_mandatory, :h_extracurriculars, :meal, :anxious, :sad, :depressed, :energy, :hopeless, :sleep_trouble, :awake_trouble, :focus, :no_school, :primary_class, :exercise)
 		end
 
 		def format_date

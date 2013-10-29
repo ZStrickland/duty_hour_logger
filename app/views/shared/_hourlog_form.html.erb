@@ -4,18 +4,20 @@
 	<div class="span12">
 		<div class="row-fluid">
 			<div class="span4">
-			<%= f.input :logdate, wrapper: :prepend, label: "Date:", :as => "string", :input_html => {:class => 'datepicker'} %>
-			<%= f.input :h_study, label: 'How many hours did you sleep?' %>
-			<%= f.input :h_sleep, label: 'How many hours did you study?' %>
-			<%= f.input :h_lecture, label: 'How many hours did you spend in lecture?' %>
-			<%= f.input :h_mandatory, label: 'How many hours did you spend in mandatory course activities outside of lecture (Sims, TBLs, PBLS, etc.)?' %>
+			<%= f.input :logdate, wrapper: :prepend, label: "Date of Log:", :as => "string", :input_html => {:class => 'datepicker'} %>
+			From waking up yesterday until waking up today, how many hours did you...
+			<%= f.input :h_study, label: 'Sleep?' %>
+			<%= f.input :h_sleep, label: 'Study?' %>
+			<%= f.input :h_lecture, label: 'Spend in lecture?' %>
+			<%= f.input :h_mandatory, label: 'Spend in mandatory course activities outside of lecture (Sims, TBLs, PBLS, etc.)?' %>
+			<%= f.input :h_extracurriculars, label: 'Spend participating in extracurriculars?' %>
+			-- It is not necessary for time to add up to 24 hours. --
 			<% if current_user.year == 1 %>
-				<%= f.input :primary_class, collection: ["Gross Anatomy", "Embryology", "Neuroscience", "ICM 1"], label: 'Which course did you spend the most time on today?' %>
+				<%= f.input :primary_class, collection: ["Gross Anatomy", "Embryology", "Neuroscience", "ICM 1"], label: 'Which course did you spend the most time on?' %>
 			<% end %>
           		<% if current_user.year == 2 %>
-          			<%= f.input :primary_class, collection: ["Pathology", "Pharmacology", "Microbiology", "iTBL", "ICM 2"], label: 'Which course did you spend the most time on today?' %>
+          			<%= f.input :primary_class, collection: ["Pathology", "Pharmacology", "Microbiology", "iTBL", "ICM 2"], label: 'Which course did you spend the most time on?' %>
           		<% end %>
-			<%= f.input :h_extracurriculars, label: 'How many hours did you spend participating in extracurriculars?' %>
 			<%= f.input :meal, label: 'How many full meals did you eat?' %>
 			</div>
 			<div class="span4 offset2">
