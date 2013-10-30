@@ -2,8 +2,8 @@
 	<%= current_user.name %>
 </h1>
 <span>
-	<%= link_to "view my profile", current_user %>
+	<%= link_to "View completed log dates", current_user %>
 </span>
 <span>
-	<%= pluralize(current_user.hourlogs.count, "log") %>
+	<%= pluralize(current_user.hourlogs.count, "logs completed") %>
 </span>
