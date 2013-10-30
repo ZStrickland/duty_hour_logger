@@ -31,7 +31,7 @@ namespace :db do
 			no_school = "#{rand(0..1)}"
 			exercise = "#{rand(0..1)}"
 			primary_class = "Gross Anatomy"
-			users.each { |user| user.hourlogs.create!(h_study: h_study, h_sleep: h_sleep, h_lecture: h_lecture, h_mandatory: h_mandatory, h_extracurriculars: h_extracurriculars, meal: meal, anxious: anxious, sad: sad, depressed: depressed, energy: energy, hopeless: hopeless, sleep_trouble: sleep_trouble, awake_trouble: awake_trouble, focus: focus, no_school: no_school, logdate: logdate)}
+			users.each { |user| user.hourlogs.create!(h_study: h_study, h_sleep: h_sleep, h_lecture: h_lecture, h_mandatory: h_mandatory, h_extracurriculars: h_extracurriculars, meal: meal, anxious: anxious, sad: sad, depressed: depressed, energy: energy, hopeless: hopeless, sleep_trouble: sleep_trouble, awake_trouble: awake_trouble, focus: focus, no_school: no_school, logdate: logdate, primary_class: primary_class)}
 		end
 	end
 end
