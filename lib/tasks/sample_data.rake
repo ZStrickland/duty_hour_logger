@@ -8,7 +8,7 @@ namespace :db do
 			email = "example-#{n+1}@louisville.edu"
 			password = "password"
 			year = "#{rand(1..2)}"
-			User.create!(name: name, email: email, password: password, password_confirmation: password, year: year)
+			User.create!(first_name: first_name, last_name: last_name, email: email, password: password, password_confirmation: password, year: year)
 		end
 
 		users = User.all(limit: 20)
