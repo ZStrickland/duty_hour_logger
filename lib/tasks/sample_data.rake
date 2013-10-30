@@ -2,6 +2,7 @@ namespace :db do
 	desc "Fill database with sample data"
 	task populate: :environment do
 		User.create!(first_name: "Example", last_name: "User", email: "example@louisville.edu", password: "password", password_confirmation: "password", year: "1", admin: true)
+		User.create!(first_name: "Zach", last_name: "Strickland", email: "z0stri01@louisville.edu", password: "password", password_confirmation: "password", year: "2", admin: true)
 		99.times do |n|
 			first_name = Faker::Name.first_name
 			last_name = Faker::Name.last_name
@@ -11,9 +12,9 @@ namespace :db do
 			User.create!(first_name: first_name, last_name: last_name, email: email, password: password, password_confirmation: password, year: year)
 		end
 
-		users = User.all(limit: 20)
+		users = User.all(limit: 5)
 		5.times do |n|
-			logdate = "10/#{n+1}/2013"
+			logdate = "10/#{n}/2013"
 			h_study = "#{rand(1..12)}"
 			h_sleep = "#{rand(3..10)}"
 			h_lecture = "#{rand(0..4)}"
