@@ -11,6 +11,7 @@
 <th>Sleep</th>
 <th>Lecture</th>
 <th>Mandatory</th>
+<th>Primary Class</th>
 <th>Extracurriculars</th>
 <th>Meals</th>
 <th>Anxious</th>
@@ -23,6 +24,7 @@
 <th>Trouble Focusing</th>
 <th>Fun</th>
 <th>Exercise</th>
+<th>Delete?</th>
 </tr>
 </thead>
 <tbody>
@@ -34,6 +36,7 @@
 <td><%= hourlog.h_sleep %> hours</td>
 <td><%= hourlog.h_lecture %> hours</td>
 <td><%= hourlog.h_mandatory %> hours</td>
+<td><%= hourlog.primary_class %></td>
 <td><%= hourlog.h_extracurriculars %> hours</td>
 <td><%= hourlog.meal %></td>
 <td><%= hourlog.anxious == 1 ? "Yes" : "No" %></td>
@@ -46,6 +49,7 @@
 <td><%= hourlog.energy == 1 ? "Yes" : "No" %></td>
 <td><%= hourlog.no_school == 1 ? "Yes" : "No" %></td>
 <td><%= hourlog.exercise == 1 ? "Yes" : "No" %></td>
+<td><%=  link_to "delete", hourlog, method: :delete, data: {confirm: "You sure?"}%></td>
 </tr>
 <% end %>
 </tbody>
