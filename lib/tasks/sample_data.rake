@@ -14,7 +14,7 @@ namespace :db do
 
 		users = User.all(limit: 5)
 		5.times do |n|
-			logdate = "10/#{n}/2013"
+			logdate = "10/#{n+1}/2013"
 			h_study = "#{rand(1..12)}"
 			h_sleep = "#{rand(3..10)}"
 			h_lecture = "#{rand(0..4)}"

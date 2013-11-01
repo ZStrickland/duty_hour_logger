@@ -6,19 +6,20 @@
 			<div class="span4">
 			<%= f.input :logdate, wrapper: :prepend, label: "Date of Log:", :as => "string", :input_html => {:class => 'datepicker'} %>
 			From waking up yesterday until waking up today, how many hours did you...
-			<%= f.input :h_study, label: 'Sleep?' %>
-			<%= f.input :h_sleep, label: 'Study?' %>
-			<%= f.input :h_lecture, label: 'Spend in lecture?' %>
-			<%= f.input :h_mandatory, label: 'Spend in mandatory course activities outside of lecture (Sims, TBLs, PBLS, etc.)?' %>
-			<%= f.input :h_extracurriculars, label: 'Spend participating in extracurriculars?' %>
-			-- It is not necessary for time to add up to 24 hours. --
+			<%= f.input :h_sleep, label: 'Sleep (including naps)?', input_html: {value: f.object.h_sleep || '0'} %>
+			<%= f.input :h_study, label: 'Study?', input_html: {value: f.object.h_study || '0'} %>
+			<%= f.input :h_lecture, label: 'Spend in lecture (in class, tegrity, pathoma)?', input_html: {value: f.object.h_lecture || '0'} %>
+			<%= f.input :h_mandatory, label: 'Spend in mandatory course activities outside of lecture (Sims, TBLs, PBLS, ICC, mandatory preceptorships, 2nd year clinics, etc.)?', input_html: {value: f.object.h_mandatory || '0'} %>
+			<%= f.input :h_extracurriculars, label: 'Spend participating in extracurriculars?', input_html: {value: f.object.h_mandatory || '0'} %>
+			-- Not necessary for time to equal 24 hours. --
+			<p></p>
 			<% if current_user.year == 1 %>
 				<%= f.input :primary_class, collection: ["Gross Anatomy", "Embryology", "Neuroscience", "ICM 1"], label: 'Which course did you spend the most time on?' %>
 			<% end %>
           		<% if current_user.year == 2 %>
           			<%= f.input :primary_class, collection: ["Pathology", "Pharmacology", "Microbiology", "iTBL", "ICM 2"], label: 'Which course did you spend the most time on?' %>
           		<% end %>
-			<%= f.input :meal, label: 'How many full meals did you eat?' %>
+			<%= f.input :meal, label: 'How many full meals did you eat?', input_html: {value: f.object.meal || '0'} %>
 			</div>
 			<div class="span4 offset2">
 			In this period have you...
